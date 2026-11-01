@@ -246,35 +246,54 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
 .hero-top>*:not(.ghost){position:relative}
 .ghost{position:absolute!important;left:0;right:0;bottom:-.14em;text-align:center;white-space:nowrap;font-weight:300;font-size:clamp(60px,11.5vw,180px);line-height:1;letter-spacing:.04em;color:transparent;-webkit-text-stroke:1px var(--ghost);pointer-events:none;user-select:none}
 .calc,.art-wrap{box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -50px 70px -50px rgba(0,0,0,.5),0 30px 60px -30px rgba(36,25,20,.55)}
-/* ---------- kitchen plan ---------- */
-.plan{display:block;width:100%;height:auto;margin:0 0 26px;background:rgba(0,0,0,.18)}
-.plan .fr{fill:var(--front,#5b402f);stroke:none;transition:fill .5s var(--ease)}
-.plan .ln{fill:none;stroke:var(--cream);stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:0}
-.plan .ln.play{animation:pd 1.1s var(--ease) both}
-.plan .dr{fill:none;stroke:rgba(239,233,223,.45);stroke-width:1}
-@keyframes pd{from{stroke-dashoffset:1}}
-.calc legend b{font-weight:400;color:var(--cream)}
-.calc .mat{margin-top:28px}
-.sw{display:flex;gap:12px}
-.sw input{position:absolute;opacity:0;pointer-events:none}
-.sw label{width:46px;height:46px;cursor:pointer;background:repeating-linear-gradient(92deg,rgba(255,255,255,.07) 0 2px,transparent 2px 7px),var(--c);border:1px solid rgba(239,233,223,.45);transition:transform .4s var(--ease)}
-.sw label:hover{transform:translateY(-3px)}
-.sw input:checked+label,.sw input:focus-visible+label{outline:2px solid var(--cream);outline-offset:3px}
-/* ---------- before / after ---------- */
-.cmp{position:relative;aspect-ratio:16/7;min-height:180px;margin-bottom:14px;overflow:hidden;background:#3a2c24;user-select:none;--x:50%}
-.cmp img,.cmp .sk{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cmp .sk{background:var(--wood);clip-path:inset(0 calc(100% - var(--x)) 0 0)}
-.cmp .sk svg{width:100%;height:100%;fill:none;stroke:var(--cream);stroke-width:2}
-.cmp .bar{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--cream);pointer-events:none}
-.cmp span{position:absolute;bottom:12px;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);pointer-events:none;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.cmp .t1{left:16px}.cmp .t2{right:16px}
-.cmp input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
-.cmp input:focus-visible+.bar{box-shadow:0 0 0 3px var(--oak)}
 /* ---------- hero video, scroll rail, cursor ---------- */
 .hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
 .rail{position:fixed;left:18px;top:64px;bottom:0;width:1px;background:rgba(255,255,255,.18);mix-blend-mode:difference;z-index:5;display:none}
 .rail i{display:block;height:100%;background:#fff;transform:scaleY(0);transform-origin:top}
 @media (min-width:1320px){.rail{display:block}}
+
+/* ---------- marquee, steps, materials, faq, filters, request ---------- */
+.mq{overflow:hidden;padding:26px 0;border-block:1px solid rgba(59,42,34,.2)}
+.mq div{display:flex;gap:56px;width:max-content;animation:mq 45s linear infinite}
+.mq span{font-size:clamp(40px,7vw,96px);font-weight:300;line-height:1;color:transparent;-webkit-text-stroke:1px var(--oak);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+.steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:26px}
+.steps li{position:relative;border-top:1px solid var(--walnut);padding-top:20px}
+.steps li::before{content:"";position:absolute;left:0;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--walnut)}
+.steps b{display:block;font-size:54px;font-weight:300;line-height:1;color:transparent;-webkit-text-stroke:1px var(--oak);margin-bottom:12px}
+.steps h3{font-size:22px;font-weight:400;margin-bottom:6px}
+.steps p{color:var(--muted);font-size:17px}
+@media (max-width:960px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.mat-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+.mat-view{--c:#5b402f;min-height:340px;display:flex;align-items:flex-end;padding:30px;color:#efe9df;background:repeating-linear-gradient(92deg,rgba(255,255,255,.06) 0 2px,transparent 2px 9px),repeating-linear-gradient(88deg,rgba(0,0,0,.14) 0 1px,transparent 1px 23px),var(--c);transition:background-color .6s var(--ease),color .6s}
+.mat-view h3{font-size:34px;font-weight:300;margin-bottom:6px}
+.mat-view p{max-width:26em;opacity:.9}
+.mat-list{display:grid;gap:10px;align-content:start}
+.mat-list button{display:flex;align-items:center;gap:16px;font:inherit;font-size:19px;color:var(--ink);background:none;border:1px solid #bdb6a8;padding:10px 14px;cursor:pointer;text-align:left;transition:border-color .4s,background .4s}
+.mat-list button i{width:36px;height:36px;flex:none;background:repeating-linear-gradient(92deg,rgba(255,255,255,.08) 0 2px,transparent 2px 7px),var(--c)}
+.mat-list button:hover,.mat-list button[aria-pressed=true]{border-color:var(--walnut);background:rgba(255,255,255,.4)}
+@media (max-width:860px){.mat-grid{grid-template-columns:1fr}.mat-view{min-height:240px}}
+.flt{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.flt button{font:inherit;font-size:16px;color:var(--ink);background:none;border:1px solid #bdb6a8;padding:8px 18px;cursor:pointer;transition:background .4s,color .4s,border-color .4s}
+.flt button.on,.flt button:hover{background:var(--walnut);color:var(--cream);border-color:var(--walnut)}
+.work[hidden]{display:none}
+.faq .wrap{max-width:820px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:20px 0;font-size:21px;font-weight:300;border-top:1px solid #bdb6a8}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:28px;line-height:1;transition:transform .4s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details:last-child{border-bottom:1px solid #bdb6a8}
+.faq details p{padding:0 0 22px;color:var(--muted);max-width:40em}
+.req{margin-top:56px;max-width:560px}
+.req h3{font-weight:300;font-size:26px;margin-bottom:18px}
+.req input,.req select,.req textarea{display:block;width:100%;font:inherit;font-size:18px;color:inherit;background:transparent;border:0;border-bottom:1px solid rgba(239,233,223,.5);padding:12px 0;margin-bottom:14px;border-radius:0}
+.req select option{color:#1d1815}
+.req input::placeholder,.req textarea::placeholder{color:rgba(239,233,223,.6)}
+.req input:focus,.req select:focus,.req textarea:focus{outline:0;border-color:var(--cream)}
+.req .btn{margin-top:10px;background:none;color:var(--cream);border-color:var(--cream);font-family:inherit}
+.req .btn::before{background:var(--cream)}
+.req .btn:hover{color:var(--walnut)}
 </style>
 </head>
 <body>
@@ -304,7 +323,7 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
     </a>
     <nav aria-label="Разделы">
       <a href="#catalog">Каталог</a>
-      <a href="#price">Стоимость</a>
+      <a href="#materials">Материалы</a>
       <a href="#works">Работы</a>
       <a href="#contacts">Контакты</a>
       <a class="call" href="tel:+79285002428"><span class="full">8-928-500-24-28</span><span class="short">Позвонить</span></a>
@@ -365,7 +384,7 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
           <h3>Кухни</h3>
           <p>Кухня под размеры вашего помещения: линейная, угловая или с островом.</p>
           <ul class="chips"><li>Кухни</li></ul>
-          <a class="more" href="#price">Сколько стоит кухня <i></i></a>
+          <a class="more" href="#contacts">Рассчитать стоимость <i></i></a>
         </div>
         <div class="art-wrap">
           <svg class="art" viewBox="0 0 400 300" role="img" aria-label="Схема кухни с верхними и нижними шкафами и островом">
@@ -480,48 +499,36 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
     </div>
   </section>
 
-  <section id="price">
-    <div class="wrap price-grid">
-      <div>
-        <h2 class="title reveal">Кухня на заказ: сколько стоит</h2>
-        <p class="sub reveal" style="--d:.1s">Цена зависит от размеров и материалов. Точную стоимость назовём после расчёта по вашим размерам.</p>
-        <ul class="factors reveal" style="--d:.2s">
-          <li>Размеры и форма: линейная, угловая, с островом</li>
-          <li>Материал фасадов и корпуса</li>
-          <li>Столешница</li>
-          <li>Фурнитура и механизмы</li>
-          <li>Встроенная техника и подсветка</li>
-        </ul>
-        <!-- Когда решите назвать цену: впишите сумму, уберите слово hidden. -->
-        <p class="from" hidden>Кухни от <b>000 000 ₽</b></p>
-      </div>
-      <div class="calc reveal" style="--d:.15s">
-        <h3>Узнайте стоимость кухни</h3>
-        <svg class="plan" viewBox="0 0 400 190" role="img" aria-label="Схема вашей кухни, вид сверху"><g id="planG"></g></svg>
-        <fieldset>
-          <legend>Форма кухни</legend>
-          <div class="seg">
-            <input type="radio" name="shape" id="s1" value="линейная" checked><label for="s1">Линейная</label>
-            <input type="radio" name="shape" id="s2" value="угловая"><label for="s2">Угловая</label>
-            <input type="radio" name="shape" id="s3" value="с островом"><label for="s3">С островом</label>
-          </div>
-        </fieldset>
-        <div>
-          <label class="lbl" for="len">Длина кухни по стенам</label>
-          <div class="len-row"><output id="lenOut" for="len">3,2 м</output></div>
-          <input type="range" id="len" min="2" max="8" step="0.1" value="3.2">
+  <div class="mq" aria-hidden="true"><div><span>КУХНИ</span><span>ШКАФЫ</span><span>ГАРДЕРОБНЫЕ</span><span>ПРИХОЖИЕ</span><span>КРОВАТИ</span><span>КУХНИ</span><span>ШКАФЫ</span><span>ГАРДЕРОБНЫЕ</span><span>ПРИХОЖИЕ</span><span>КРОВАТИ</span></div></div>
+
+  <section id="process">
+    <div class="wrap">
+      <h2 class="title reveal">Как мы работаем</h2>
+      <p class="sub reveal" style="--d:.1s">От первого звонка до установки: пять понятных шагов.</p>
+      <ol class="steps">
+        <li class="reveal" style="--d:0.0s"><b>01</b><h3>Заявка</h3><p>Позвоните или напишите в WhatsApp и расскажите, что нужно.</p></li>
+        <li class="reveal" style="--d:0.1s"><b>02</b><h3>Замер</h3><p>Приедем, снимем размеры и обсудим пожелания.</p></li>
+        <li class="reveal" style="--d:0.2s"><b>03</b><h3>Проект</h3><p>Нарисуем эскиз и подберём материалы.</p></li>
+        <li class="reveal" style="--d:0.3s"><b>04</b><h3>Изготовление</h3><p>Сделаем мебель по вашим размерам.</p></li>
+        <li class="reveal" style="--d:0.4s"><b>05</b><h3>Установка</h3><p>Привезём и аккуратно установим.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="materials" style="background:var(--stone-deep)">
+    <div class="wrap">
+      <h2 class="title reveal">Материалы</h2>
+      <p class="sub reveal" style="--d:.1s">Выберите образец, чтобы увидеть его цвет. Живые образцы покажем при замере.</p>
+      <div class="mat-grid reveal">
+        <div class="mat-view" id="matView" style="--c:#5b402f"><div><h3 id="matT">Орех</h3><p id="matD">Тёмный и тёплый, с выразительным рисунком древесины.</p></div></div>
+        <div class="mat-list">
+          <button type="button" aria-pressed="true" style="--c:#5b402f" data-c="#5b402f" data-fg="#efe9df" data-t="Орех" data-d="Тёмный и тёплый, с выразительным рисунком древесины."><i></i>Орех</button>
+          <button type="button" aria-pressed="false" style="--c:#b48c5e" data-c="#b48c5e" data-fg="#1d1815" data-t="Дуб" data-d="Светлее и спокойнее, легко сочетается с любым интерьером."><i></i>Дуб</button>
+          <button type="button" aria-pressed="false" style="--c:#2d2019" data-c="#2d2019" data-fg="#efe9df" data-t="Тёмный шпон" data-d="Глубокий цвет натурального дерева для строгих фасадов."><i></i>Тёмный шпон</button>
+          <button type="button" aria-pressed="false" style="--c:#bfb9ac" data-c="#bfb9ac" data-fg="#1d1815" data-t="Камень" data-d="Для столешниц и панелей: прохладный и сдержанный."><i></i>Камень</button>
+          <button type="button" aria-pressed="false" style="--c:#ece8df" data-c="#ece8df" data-fg="#1d1815" data-t="Белая эмаль" data-d="Гладкие чистые фасады без рисунка."><i></i>Белая эмаль</button>
+          <button type="button" aria-pressed="false" style="--c:#3a3836" data-c="#3a3836" data-fg="#efe9df" data-t="Графит" data-d="Матовый тёмный тон, хорошо играет рядом с деревом."><i></i>Графит</button>
         </div>
-        <fieldset class="mat">
-          <legend>Фасады: <b id="matName">орех</b></legend>
-          <div class="sw">
-          <input type="radio" name="mat" id=m1 value="орех" data-c="#5b402f" aria-label="Орех" checked><label for="m1" style="--c:#5b402f" title="Орех"></label>
-          <input type="radio" name="mat" id=m2 value="дуб" data-c="#b48c5e" aria-label="Дуб"><label for="m2" style="--c:#b48c5e" title="Дуб"></label>
-          <input type="radio" name="mat" id=m3 value="камень" data-c="#bfb9ac" aria-label="Камень"><label for="m3" style="--c:#bfb9ac" title="Камень"></label>
-          <input type="radio" name="mat" id=m4 value="шпон" data-c="#2d2019" aria-label="Тёмный шпон"><label for="m4" style="--c:#2d2019" title="Тёмный шпон"></label>
-          </div>
-        </fieldset>
-        <a class="btn" id="calcBtn" href="https://wa.me/79285002824">Отправить в WhatsApp</a>
-        <p class="note">Откроется чат с готовым сообщением. Мы ответим и посчитаем.</p>
       </div>
     </div>
   </section>
@@ -532,11 +539,8 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
       <p class="sub reveal" style="--d:.1s">Нажмите на фото, чтобы открыть на весь экран.</p>
       <!-- Чтобы вставить настоящее фото, замените <span class="ph"></span> на:
            <img src="images/works/kitchen-1.jpg" alt="Кухня" loading="lazy">  -->
-      <div class="cmp reveal">
-        <img src="images/interior.jpg" alt="Готовая кухня с деревянными фасадами" loading="lazy">
-        <div class="sk"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M40 232H760M40 232V380H560V232M200 232V380M380 232V380M620 232V380H760V232M690 232V380M95 232V196H170M120 196c0-30 30-30 30 0M700 232V180c0-30 50-30 50 0V232"/></svg></div>
-        <input type="range" min="0" max="100" value="50" aria-label="Сравнить чертёж и готовую работу"><i class="bar"></i>
-        <span class="t1">Чертёж</span><span class="t2">Готовая работа</span>
+      <div class="flt reveal" role="group" aria-label="Фильтр работ">
+        <button type="button" class="on" data-f="all">Все</button><button type="button" data-f="k">Кухни</button><button type="button" data-f="s">Шкафы и прихожие</button><button type="button" data-f="h">Мебель для дома</button>
       </div>
       <div class="gallery">
         <button class="work wide reveal" type="button" data-title="Кухня"><span class="ph"></span><span class="cap">Кухня</span></button>
@@ -552,6 +556,17 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
     </div>
   </section>
 
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <h2 class="title reveal">Частые вопросы</h2>
+      <details class="reveal"><summary>Как заказать мебель?</summary><p>Позвоните или напишите в WhatsApp: договоримся о замере и обсудим задачу.</p></details>
+      <details class="reveal"><summary>Нужен ли замер?</summary><p>Мебель делается по вашим размерам, поэтому мастер приедет, замерит и обсудит детали.</p></details>
+      <details class="reveal"><summary>Сколько стоит кухня?</summary><p>Цена зависит от размеров, материалов и фурнитуры. Точную стоимость назовём после расчёта по вашим размерам.</p></details>
+      <details class="reveal"><summary>Можно ли сделать по своему эскизу или фото?</summary><p>Пришлите фото или эскиз, обсудим, как это воплотить.</p></details>
+      <details class="reveal"><summary>Работаете ли вы за пределами Махачкалы?</summary><p>Напишите, где находится ваш объект, и мы уточним возможности.</p></details>
+    </div>
+  </section>
+
   <section id="contacts">
     <div class="contacts-bg"><img src="images/interior.jpg" alt="" data-par></div>
     <div class="wrap">
@@ -564,6 +579,13 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
         <a href="https://yandex.ru/maps/?text=%D0%9C%D0%B0%D1%85%D0%B0%D1%87%D0%BA%D0%B0%D0%BB%D0%B0%2C%20%D0%A2%D0%B0%D0%BB%D0%B3%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F" target="_blank" rel="noopener"><small>Адрес, открыть на карте</small><strong>Махачкала, ул. Талгинская</strong></a>
         <!-- Время работы: добавьте ещё одну ссылку или блок такого же вида. -->
       </div>
+      <form class="req reveal" id="req" style="--d:.3s">
+        <h3>Или оставьте заявку</h3>
+        <input name="n" type="text" placeholder="Ваше имя" required autocomplete="name">
+        <select name="w" aria-label="Что нужно"><option>Кухня</option><option>Шкаф или гардеробная</option><option>Прихожая</option><option>Мебель для дома</option><option>Другое</option></select>
+        <textarea name="c" rows="2" placeholder="Размеры, пожелания, город (по желанию)"></textarea>
+        <button class="btn" type="submit">Отправить в WhatsApp</button>
+      </form>
     </div>
   </section>
 </main>
@@ -633,20 +655,6 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
   select(0); placeNow();
   addEventListener('resize', placeNow);
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(placeNow);
-
-  /* ---- price calculator -> WhatsApp ---- */
-  var len = document.getElementById('len'), lenOut = document.getElementById('lenOut'), btn = document.getElementById('calcBtn');
-  function calc(){
-    var v = parseFloat(len.value), shape = document.querySelector('input[name="shape"]:checked').value;
-    var txt = v.toFixed(1).replace('.', ',');
-    lenOut.textContent = txt + ' м';
-    len.style.setProperty('--p', ((v - len.min) / (len.max - len.min) * 100) + '%');
-    var msg = 'Здравствуйте! Хочу заказать кухню: ' + shape + ', длина по стенам ' + txt + ' м. Подскажите, пожалуйста, стоимость.';
-    btn.href = 'https://wa.me/79285002824?text=' + encodeURIComponent(msg);
-  }
-  len.addEventListener('input', calc);
-  [].forEach.call(document.querySelectorAll('input[name="shape"]'), function(r){ r.addEventListener('change', calc); });
-  calc();
 
   /* ---- reveal on scroll ---- */
   var rev = [].slice.call(document.querySelectorAll('.reveal'));
@@ -763,36 +771,28 @@ footer{background:#1a120f;color:#a39587;font-size:15px;padding:24px 0}
     if(Math.abs(dx) > 60) step(dx < 0 ? 1 : -1);
   });
 
-  /* ---- kitchen plan + materials ---- */
-  var g = document.getElementById('planG'), pl = g.parentNode, mn = document.getElementById('matName');
-  function R(x, y, w, h){ return 'M' + x + ' ' + y + 'h' + w + 'v' + h + 'h' + (-w) + 'z'; }
-  function mat(){
-    var m = document.querySelector('input[name="mat"]:checked');
-    pl.style.setProperty('--front', m.dataset.c); mn.textContent = m.value; return m.value;
-  }
-  function draw(an){
-    var L = parseFloat(len.value), sh = document.querySelector('input[name="shape"]:checked').value;
-    var s = 40, d = 26, y = 16, run = L * s, x, i, tk = '', ds;
-    if(sh === 'угловая'){
-      var a = L * .62 * s, b = L * .38 * s; x = (400 - a) / 2; run = a;
-      ds = R(x, y, a, d) + R(x + a - d, y + d, d, b);
-    } else {
-      x = (400 - run) / 2; ds = R(x, y, run, d);
-      if(sh === 'с островом') ds += R(x + run * .25, y + d + 54, run * .5, d + 8);
-    }
-    for(i = 1; i * 24 < run - 8; i++) tk += 'M' + (x + i * 24) + ' ' + y + 'v' + d;
-    g.innerHTML = '<path class="fr" d="' + ds + '"/><path class="dr" d="' + tk + '"/><path class="ln' + (an ? ' play' : '') + '" pathLength="1" d="' + ds + '"/>';
-    btn.href += encodeURIComponent(' Фасады: ' + mat() + '.');
-  }
-  function upd(an){ calc(); draw(an); }
-  len.addEventListener('input', function(){ upd(false); });
-  [].forEach.call(document.querySelectorAll('input[name="shape"]'), function(r){ r.addEventListener('change', function(){ upd(true); }); });
-  [].forEach.call(document.querySelectorAll('input[name="mat"]'), function(r){ r.addEventListener('change', function(){ upd(false); }); });
-  upd(true);
+  /* ---- materials ---- */
+  var mv = document.getElementById('matView'), mbs = [].slice.call(document.querySelectorAll('.mat-list button'));
+  mbs.forEach(function(b){ b.addEventListener('click', function(){
+    mbs.forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+    mv.style.setProperty('--c', b.dataset.c); mv.style.color = b.dataset.fg;
+    document.getElementById('matT').textContent = b.dataset.t; document.getElementById('matD').textContent = b.dataset.d;
+  }); });
 
-  /* ---- before / after ---- */
-  var cmp = document.querySelector('.cmp');
-  cmp.querySelector('input').addEventListener('input', function(e){ cmp.style.setProperty('--x', e.target.value + '%'); });
+  /* ---- gallery filter ---- */
+  var cat = {'Кухня':'k','Шкаф-купе':'s','Гардеробная':'s','Прихожая':'s','Шкаф':'s','Стол и стулья':'h','Диван':'h','Кровать':'h'};
+  var fb = [].slice.call(document.querySelectorAll('.flt button')), ws = [].slice.call(document.querySelectorAll('.work'));
+  fb.forEach(function(b){ b.addEventListener('click', function(){
+    fb.forEach(function(x){ x.classList.toggle('on', x === b); });
+    ws.forEach(function(w){ w.hidden = b.dataset.f !== 'all' && cat[w.dataset.title] !== b.dataset.f; });
+  }); });
+
+  /* ---- request form -> WhatsApp ---- */
+  document.getElementById('req').addEventListener('submit', function(e){
+    e.preventDefault(); var f = e.target;
+    var m = 'Здравствуйте! Меня зовут ' + f.n.value.trim() + '. Хочу заказать: ' + f.w.value.toLowerCase() + '.' + (f.c.value.trim() ? ' ' + f.c.value.trim() : '');
+    window.open('https://wa.me/79285002824?text=' + encodeURIComponent(m), '_blank', 'noopener');
+  });
 
   /* ---- hero video (only if a file is set) ---- */
   var hv = document.querySelector('.hv');
